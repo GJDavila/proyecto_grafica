@@ -19,10 +19,10 @@ using namespace std;
 
 //
 // ********************************************************************
-//ffmpeg -i out.avi -vf "fps=10" frames_jarra/img%d.png
+ 
 // Compilar : g++-7 main.cpp -o m `pkg-config --cflags --libs opencv` --std=c++11
-// Ejecucion : ./m numero_imagenes nombre_carpeta (0 o 1 para ver los contornos)
-// ./m 490 frames_buho_HD 0
+// Ejecucion : ./m 0 nombre_carpeta_resultados_frame 0
+// ./m 0 frames_buho_HD 0
 // ********************************************************************
 
 typedef pair<float, float> point;
@@ -90,10 +90,7 @@ void load_images(string ruta, int num_arch)
     cvtColor(img, img_gray, CV_BGR2GRAY);
     Mat contornos;
     Canny(img_gray, contornos, threshold, threshold * 2, 5, true);
-  //  if(flag_ver_img)
-  //      imshow("contornos", contornos);
-
-    //2) obtener puntos de los contornos
+   
     vector<vector<Point> > p_contornos;
     v_points VP;
 
@@ -113,11 +110,7 @@ void load_images(string ruta, int num_arch)
     if(flag_ver_img)
         waitKey(1e3);
 
-    // if (waitKey(1e6) == 27)
-    // {
-    //     cout << "OK" << endl;
-    // }
-    // print_poits(num_arch );
+   
 
 }
 
